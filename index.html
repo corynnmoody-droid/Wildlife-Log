@@ -55,6 +55,8 @@
   <button class="filter-btn" data-filter="Bird">🪶 Birds</button>
   <button class="filter-btn" data-filter="Dragonfly">🪲 Dragonflies</button>
   <button class="filter-btn" data-filter="Insect">🦟 Insects</button>
+  <button class="filter-btn" data-filter="Mammal">🐾 Mammals</button>
+  <button class="filter-btn" data-filter="Reptile">🦎 Reptiles</button>
 </div>
 
 <div class="form-panel" id="form-panel">
@@ -64,6 +66,8 @@
       <option value="Bird">Bird</option>
       <option value="Dragonfly">Dragonfly</option>
       <option value="Insect">Insect</option>
+      <option value="Mammal">Mammal</option>
+      <option value="Reptile">Reptile</option>
     </select>
   </div>
   <div class="form-grid">
@@ -167,6 +171,8 @@
   function typeLabel(t) {
     if (t === 'Dragonfly') return '🪲 Dragonfly';
     if (t === 'Insect') return '🦟 Insect';
+    if (t === 'Mammal') return '🐾 Mammal';
+    if (t === 'Reptile') return '🦎 Reptile';
     return '🪶 Bird';
   }
 
@@ -188,7 +194,9 @@
     const bc = entries.filter(function(e){return e.type==='Bird';}).length;
     const dc = entries.filter(function(e){return e.type==='Dragonfly';}).length;
     const ic = entries.filter(function(e){return e.type==='Insect';}).length;
-    countLabel.textContent = bc + ' bird' + (bc===1?'':'s') + '  ·  ' + dc + ' dragonfly species  ·  ' + ic + ' insect' + (ic===1?'':'s');
+    const mc = entries.filter(function(e){return e.type==='Mammal';}).length;
+    const rc = entries.filter(function(e){return e.type==='Reptile';}).length;
+    countLabel.textContent = bc + ' bird' + (bc===1?'':'s') + '  ·  ' + dc + ' dragonfly' + (dc===1?'':'s') + '  ·  ' + ic + ' insect' + (ic===1?'':'s') + (mc ? '  ·  ' + mc + ' mammal' + (mc===1?'':'s') : '') + (rc ? '  ·  ' + rc + ' reptile' + (rc===1?'':'s') : '');
 
     if (!sorted.length) { listEl.innerHTML=''; emptyEl.style.display='block'; return; }
     emptyEl.style.display = 'none';
